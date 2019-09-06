@@ -8,18 +8,18 @@ int main(int arcg, char* argv []){
 
     printf("Matheus Carvalho\tRA: 00087294\nYukiko Sasaki\t\tRA: 00052235\n\n\nCONVERSAO ENTRE SISTEMAS SRU X SRD\n\n");
 
-    int xu_min, xu_max, yu_min, yu_max, xd_min, xd_max, yd_min, yd_max, xu, xd, yu, yd, type, again, dispx, dispy, i;
+    int xu_min, xu_max, yu_min, yu_max, xd_min, xd_max, yd_min, yd_max, xu, yu, type, dispx, dispy;
 
     printf("Tipos de conversao:\n1. SRU --> SRD\n2. SRD --> SRU\n\nEscolha o tipo de conversao: ");
     scanf("%d", &type);
 
-    again, i = 1;
+    int again, i, xd, yd = 1;
     int resx, resy = 0;
 
     //Definir tipo de conversão (SRU -> SRD ou SRD -> SRU)
     switch(type){
         case 1:
-            //Definir variáveis
+            //Receber os valores das variáveis
             printf("\n\nSRU --> SRD\n");
             printf("\nValor de Xu minimo: ");
             scanf("%d", &xu_min);
@@ -30,33 +30,41 @@ int main(int arcg, char* argv []){
             printf("\nValor de Yu maximo: ");
             scanf("%d", &yu_max);
 
+            // Receber os valores da resolução (x e y)
             printf("Resolução 'x' do dispositivo (->x, y): ");
             scanf("%d", &dispx);
             printf("Resolução 'y' do dispositivo (%d, ->y): ", dispx);
             scanf("%d", &dispy);
 
-            xd = ((dispx/xu_max) * xu);
+            // Cálculo do 'xd' e 'dy'
+            xd = (dispx/xu_max) * xu;
             yd = ((-dispy / yu_max) * yu);
 
-            printf("\n\nA funcao de X: %d%s", xd, getName(xu));
+            // Mostrando o resultado de 'xd' na tela
+            printf("\n\nA funcao de X: %d.%s", xd, getName(xu));
             
+            // Se o display do eixo y for maior que 0, mostrar o sinal positivo
+            // Se o display do eixo y for menor que 0, mostrar o sinal negativo
             if(dispy > 0)
             {
-                printf("\nA funcao de Y: %d%s + %d", yd, getName(yu), dispy);
+                printf("\nA funcao de Y: %d.%s + %d", yd, getName(yu), dispy);
             }
             else
             {
-                printf("\nA funcao de Y: %d%s - %d", yd, getName(yu), dispy);
+                printf("\nA funcao de Y: %d.%s - %d", yd, getName(yu), dispy);
             }
             
+            // Looping do while para inserção das coordenadas dos pontos
             do
             {
                 resx, resy = 0;
                 printf("\n\nInforme o 'X' do ponto %d(X, Y): ", i);
                 scanf("%d", &xd);
                 printf("\nInforme o 'Y' do ponto %d(%d, Y): ", i, xd);
-                scanf("%d", yd);
+                scanf("%d", &yd);
                 
+                // Se o display do eixo y for menor que 0 mostrar as equações de acordo
+                // Senão mostrar as outras equações
                 if(dispy > 0)
                 {
                     resx = (dispx/xu_max)*xd;
@@ -69,15 +77,16 @@ int main(int arcg, char* argv []){
                     resx = (dispx/xu_max)*xd;
                     resy = ((-dispx/xu_max)*yd)-dispy;
 
-                    printf("P%d(x, y)= %d, %d", i, xd, yd);
+                    printf("P%d(x, y)= %d, %d", i, resx, resy);
                 }
 
+                // Continuar adicionando pontos com coordenadas
                 printf("\n\nAdicionar mais pontos?[1 - Sim, 2 - Não]");
                 scanf("%d", &again);
                 i++;
             } while (again == 1);
             
-
+            
         case 2:
             printf("\nSRD --> SRU");
     }
