@@ -14,13 +14,13 @@ int main(int arcg, char* argv []){
 
     int again, xd, yd = 1;
     int resx, resy = 0;
+    int i = 1;
 
     //Definir tipo de conversão (SRU -> SRD ou SRD -> SRU)
     switch(type){
         case 1:
             xu = 1;
             yu = 1;
-            int i = 1;
 
             //Receber os valores das variáveis
             printf("\n\nSRU --> SRD\n");
@@ -91,7 +91,73 @@ int main(int arcg, char* argv []){
             break;
 
         case 2:
+            xu = 1;
+            yu = 1;
+
             printf("\nSRD --> SRU");
+
+            //Receber os valores das variáveis
+            printf("\nValor de Xu minimo: ");
+            scanf("%d", &xu_min);
+            printf("\nValor de Xu maximo: ");
+            scanf("%d", &xu_max);
+            printf("\nValor de Yu minimo: ");
+            scanf("%d", &yu_min);
+            printf("\nValor de Yu maximo: ");
+            scanf("%d", &yu_max);
+
+            // Receber os valores da resolução (x e y)
+            printf("\nResolução 'x' do dispositivo (->x, y): ");
+            scanf("%d", &dispx);
+            printf("Resolução 'y' do dispositivo (%d, ->y): ", dispx);
+            scanf("%d", &dispy);
+
+            xu = (dispx/xu_max);
+            yu =((-dispy)/(dispy/yu_max));
+            
+            printf("\n\nO valor de 'x' é: %dxu", xu);
+
+            if(dispy > 0)
+            {
+                printf("\nA funcao de Y: %dyu - %d", yd, dispy);
+            }
+            else
+            {
+                printf("\nA funcao de Y: %dyu + %d", yd, dispy);
+            }
+
+            // Looping do while para inserção das coordenadas dos pontos
+            do
+            {
+                resx, resy = 0;
+                printf("\n\nInforme o 'X' do ponto %d(X, Y): ", i);
+                scanf("%d", &xd);
+                printf("\nInforme o 'Y' do ponto %d(%d, Y): ", i, xd);
+                scanf("%d", &yd);
+                
+                // Se o display do eixo y for menor que 0 mostrar as equações de acordo
+                // Senão mostrar as outras equações
+                if(dispy > 0)
+                {
+                    resx = (dispx/xu_max)*xd;
+                    resy = ((-dispx/xu_max)*yd)-dispy;
+                    
+                    printf("P%d(%d,%d)  XD=%d, YD=%d", i, xd, yd, resx, resy);
+                }
+                else
+                {
+                    resx = (dispx/xu_max)*xd;
+                    resy = ((-dispx/xu_max)*yd)+dispy;
+
+                    printf("P%d(%d,%d)  XD=%d, YD=%d", i, xd, yd, resx, resy);
+                }
+
+                // Continuar adicionando pontos com coordenadas
+                printf("\n\nAdicionar mais pontos?[1 - Sim, 2 - Não]");
+                scanf("%d", &again);
+                i++;
+            } while (again == 1);
+            break;
     }
     return 0;
 }
