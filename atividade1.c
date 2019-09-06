@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <locale.h>
-#define getName(var) #var
 
 int main(int arcg, char* argv []){
     setlocale(LC_ALL, "");
@@ -19,6 +18,9 @@ int main(int arcg, char* argv []){
     //Definir tipo de conversão (SRU -> SRD ou SRD -> SRU)
     switch(type){
         case 1:
+            xu = 1;
+            yu = 1;
+
             //Receber os valores das variáveis
             printf("\n\nSRU --> SRD\n");
             printf("\nValor de Xu minimo: ");
@@ -41,17 +43,17 @@ int main(int arcg, char* argv []){
             yd = ((-dispy / yu_max) * yu);
 
             // Mostrando o resultado de 'xd' na tela
-            printf("\n\nA funcao de X: %d.%s", xd, getName(xu));
+            printf("\n\nA funcao de X: %dxu", xd);
             
             // Se o display do eixo y for maior que 0, mostrar o sinal positivo
             // Se o display do eixo y for menor que 0, mostrar o sinal negativo
             if(dispy > 0)
             {
-                printf("\nA funcao de Y: %d.%s + %d", yd, getName(yu), dispy);
+                printf("\nA funcao de Y: %dyu + %d", yd, dispy);
             }
             else
             {
-                printf("\nA funcao de Y: %d.%s - %d", yd, getName(yu), dispy);
+                printf("\nA funcao de Y: %dyu - %d", yd, dispy);
             }
             
             // Looping do while para inserção das coordenadas dos pontos
@@ -86,7 +88,7 @@ int main(int arcg, char* argv []){
                 i++;
             } while (again == 1);
             
-            
+
         case 2:
             printf("\nSRD --> SRU");
     }
