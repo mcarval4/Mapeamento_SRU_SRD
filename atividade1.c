@@ -12,7 +12,7 @@ int main(int arcg, char* argv []){
     printf("Tipos de conversao:\n1. SRU --> SRD\n2. SRD --> SRU\n\nEscolha o tipo de conversao: ");
     scanf("%d", &type);
 
-    int again, i, xd, yd = 1;
+    int again, xd, yd = 1;
     int resx, resy = 0;
 
     //Definir tipo de conversão (SRU -> SRD ou SRD -> SRU)
@@ -20,6 +20,7 @@ int main(int arcg, char* argv []){
         case 1:
             xu = 1;
             yu = 1;
+            int i = 1;
 
             //Receber os valores das variáveis
             printf("\n\nSRU --> SRD\n");
@@ -70,16 +71,16 @@ int main(int arcg, char* argv []){
                 if(dispy > 0)
                 {
                     resx = (dispx/xu_max)*xd;
-                    resy = ((-dispy/xu_max)*yd)+dispy;
+                    resy = ((-dispx/xu_max)*yd)+dispy;
 
-                    printf("P%d(x,y)= %d, %d", i, xd, yd);
+                    printf("P%d(%d,%d)  XD=%d, YD=%d", i, xd, yd, resx, resy);
                 }
                 else
                 {
                     resx = (dispx/xu_max)*xd;
                     resy = ((-dispx/xu_max)*yd)-dispy;
 
-                    printf("P%d(x, y)= %d, %d", i, resx, resy);
+                    printf("P%d(%d,%d)  XD=%d, YD=%d", i, xd, yd, resx, resy);
                 }
 
                 // Continuar adicionando pontos com coordenadas
@@ -87,7 +88,7 @@ int main(int arcg, char* argv []){
                 scanf("%d", &again);
                 i++;
             } while (again == 1);
-            
+            break;
 
         case 2:
             printf("\nSRD --> SRU");
