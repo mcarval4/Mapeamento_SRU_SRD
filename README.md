@@ -18,7 +18,7 @@ trabalho próprio.
 - Por exemplo, uma aplicação CAD de arquitetura o universo é dado em metros ou centímetros. Para uma aplicação de mecânica de precisão, o universo estará em milímetros ou nanômetros.
 - Cada um destes sistemas tem uma escala e seus limites extremos (coordenadas mínimas e máximas do universo).
 
-![Imagem explicativa](img/img1.PNG "Imagem explicativa:")
+![Imagem explicativa](img1.PNG "Imagem explicativa:")
 
 ### Sistema de Referência do Dispositivo – SRD
 
@@ -30,7 +30,7 @@ configuração do sistema operacional.
     - Ex. (800 x 600), (1.024 x768)
     - Nesse caso, a origem é o canto superior esquerdo do dispositivo.
 
-![Imagem explicativa](img/img2.PNG "Imagem explicativa:")
+![Imagem explicativa](img2.PNG "Imagem explicativa:")
 
 ### Conversões entre Sistemas de Referência
 
@@ -42,7 +42,7 @@ um dos sistemas.
 - O Processo de conversão é chamado de Mapeamento e é
 uma das etapas do processo de visualização de imagens 2D e 3D (a ser visto em breve).
 
-![Imagem explicativa](img/img3.PNG "Imagem explicativa:")
+![Imagem explicativa](img3.PNG "Imagem explicativa:")
 
 |               | Limites de SRU           | Limites do SRD  |
 | ------------- |:-------------:| -----:|
@@ -51,12 +51,12 @@ uma das etapas do processo de visualização de imagens 2D e 3D (a ser visto em 
 
 ### Componente X:
 
-![Imagem explicativa](img/eq1.PNG "Imagem explicativa:")
+![Imagem explicativa](eq1.PNG "Imagem explicativa:")
 
-![Imagem explicativa](img/eq.PNG "Imagem explicativa:")
+![Imagem explicativa](eq.PNG "Imagem explicativa:")
 
 ## Componente Y:
 
-![Imagem explicativa](img/graf2.PNG "Imagem explicativa:")
+![Imagem explicativa](graf2.PNG "Imagem explicativa:")
 
-![Imagem explicativa](img/eq2.PNG "Imagem explicativa:")
+![Imagem explicativa](eq2.PNG "Imagem explicativa:")
