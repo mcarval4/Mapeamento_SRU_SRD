@@ -7,159 +7,91 @@ int main(int arcg, char* argv []){
 
     printf("Matheus Carvalho\tRA: 00087294\nYukiko Sasaki\t\tRA: 00052235\n\n\nCONVERSAO ENTRE SISTEMAS SRU X SRD\n\n");
 
-    int xu_min, xu_max, yu_min, yu_max, xd_min, xd_max, yd_min, yd_max, xu, yu, type, dispx, dispy;
+    float xu_min, xu_max, yu_min, yu_max, xd_min, xd_max, yd_min, yd_max, xu, yu, xd, yd;
+    int type, again, i;
 
     printf("Tipos de conversao:\n1. SRU --> SRD\n2. SRD --> SRU\n\nEscolha o tipo de conversao: ");
     scanf("%d", &type);
 
-    int again, xd, yd = 1;
-    int resx, resy = 0;
-    int i = 1;
+    again = 1;
+    i = 1;
 
-    //Definir tipo de conversão (SRU -> SRD ou SRD -> SRU)
     switch(type){
         case 1:
-            xu = 1;
-            yu = 1;
+            printf("\nSRU --> SRD\n");
+            printf("Valor de Xu minimo: ");
+            scanf("%f", &xu_min);
+            printf("Valor de Xu maximo: ");
+            scanf("%f", &xu_max);
+            printf("Valor de Yu minimo: ");
+            scanf("%f", &yu_min);
+            printf("Valor de Yu maximo: ");
+            scanf("%f", &yu_max);
+            printf("Valor de Xd minimo: ");
+            scanf("%f", &xd_min);
+            printf("Valor de Xd maximo: ");
+            scanf("%f", &xd_max);
+            printf("Valor de Yd minimo: ");
+            scanf("%f", &yd_min);
+            printf("Valor de Yd maximo: ");
+            scanf("%f", &yd_max);
 
-            //Receber os valores das variáveis
-            printf("\n\nSRU --> SRD\n");
-            printf("\nValor de Xu minimo: ");
-            scanf("%d", &xu_min);
-            printf("\nValor de Xu maximo: ");
-            scanf("%d", &xu_max);
-            printf("\nValor de Yu minimo: ");
-            scanf("%d", &yu_min);
-            printf("\nValor de Yu maximo: ");
-            scanf("%d", &yu_max);
-
-            // Receber os valores da resolução (x e y)
-            printf("Resolução 'x' do dispositivo (->x, y): ");
-            scanf("%d", &dispx);
-            printf("Resolução 'y' do dispositivo (%d, ->y): ", dispx);
-            scanf("%d", &dispy);
-
-            // Cálculo do 'xd' e 'dy'
-            xd = (dispx/xu_max) * xu;
-            yd = ((-dispy / yu_max) * yu);
-
-            // Mostrando o resultado de 'xd' na tela
-            printf("\n\nA funcao de X: %dxu", xd);
-            
-            // Se o display do eixo y for maior que 0, mostrar o sinal positivo
-            // Se o display do eixo y for menor que 0, mostrar o sinal negativo
-            if(dispy > 0)
-            {
-                printf("\nA funcao de Y: %dyu + %d", yd, dispy);
-            }
-            else
-            {
-                printf("\nA funcao de Y: %dyu - %d", yd, dispy);
-            }
-            
-            // Looping do while para inserção das coordenadas dos pontos
             do
             {
-                resx, resy = 0;
-                printf("\n\nInforme o 'X' do ponto %d(X, Y): ", i);
-                scanf("%d", &xd);
-                printf("\nInforme o 'Y' do ponto %d(%d, Y): ", i, xd);
-                scanf("%d", &yd);
-                
-                // Se o display do eixo y for menor que 0 mostrar as equações de acordo
-                // Senão mostrar as outras equações
-                if(dispy > 0)
-                {
-                    resx = (dispx/xu_max)*xd;
-                    resy = ((-dispx/xu_max)*yd)+dispy;
+                printf("\nInforme o 'Xu' do ponto %d(x, y): ", i);
+                scanf("%f", &xu);
+                printf("Informe o 'Yu' do ponto %d(%.0f, y): ", i, xu);
+                scanf("%f", &yu);
 
-                    printf("P%d(%d,%d)  XD=%d, YD=%d", i, xd, yd, resx, resy);
-                }
-                else
-                {
-                    resx = (dispx/xu_max)*xd;
-                    resy = ((-dispx/xu_max)*yd)-dispy;
+                xd = (((xd_max - xd_min)*(xu - xu_min))/(xu_max - xu_min)) + xd_min;
+                yd = (((yd_min - yd_max)*(yu - yu_min))/(yu_max - yu_min)) + yd_max;
 
-                    printf("P%d(%d,%d)  XD=%d, YD=%d", i, xd, yd, resx, resy);
-                }
+                printf("\nPonto %d(%.0f,%.0f)  Xd = %.0f, Yd = %.0f", i, xu, yu, xd, yd);
 
-                // Continuar adicionando pontos com coordenadas
-                printf("\n\nAdicionar mais pontos?[1 - Sim, 2 - Não]");
+                printf("\n\nAdicionar mais pontos?\n1. Sim\n2. N�o\n");
                 scanf("%d", &again);
                 i++;
             } while (again == 1);
+
             break;
 
         case 2:
-            xu = 1;
-            yu = 1;
+            printf("\nSRU --> SRD\n");
+            printf("Valor de Xu minimo: ");
+            scanf("%f", &xu_min);
+            printf("Valor de Xu maximo: ");
+            scanf("%f", &xu_max);
+            printf("Valor de Yu minimo: ");
+            scanf("%f", &yu_min);
+            printf("Valor de Yu maximo: ");
+            scanf("%f", &yu_max);
+            printf("Valor de Xd minimo: ");
+            scanf("%f", &xd_min);
+            printf("Valor de Xd maximo: ");
+            scanf("%f", &xd_max);
+            printf("Valor de Yd minimo: ");
+            scanf("%f", &yd_min);
+            printf("Valor de Yd maximo: ");
+            scanf("%f", &yd_max);
 
-            printf("\nSRD --> SRU");
-
-            //Receber os valores das variáveis
-            printf("\nValor de Xu minimo: ");
-            scanf("%d", &xu_min);
-            printf("\nValor de Xu maximo: ");
-            scanf("%d", &xu_max);
-            printf("\nValor de Yu minimo: ");
-            scanf("%d", &yu_min);
-            printf("\nValor de Yu maximo: ");
-            scanf("%d", &yu_max);
-
-            // Receber os valores da resolução (x e y)
-            printf("\nResolução 'x' do dispositivo (->x, y): ");
-            scanf("%d", &dispx);
-            printf("Resolução 'y' do dispositivo (%d, ->y): ", dispx);
-            scanf("%d", &dispy);
-
-            xu = (dispx/xu_max);
-            yu =((-dispy)/(dispy/yu_max));
-            
-            printf("\n\nO valor de 'x' é: %dxu", xu);
-
-            if(dispy > 0)
-            {
-                printf("\nA funcao de Y: %dyu - %d", yd, dispy);
-            }
-            else
-            {
-                printf("\nA funcao de Y: %dyu + %d", yd, dispy);
-            }
-
-            // Looping do while para inserção das coordenadas dos pontos
             do
             {
-                resx, resy = 0;
-                printf("\n\nInforme o 'X' do ponto %d(X, Y): ", i);
-                scanf("%d", &xd);
-                printf("\nInforme o 'Y' do ponto %d(%d, Y): ", i, xd);
-                scanf("%d", &yd);
-                
-                // Se o display do eixo y for menor que 0 mostrar as equações de acordo
-                // Senão mostrar as outras equações
-                if(dispy > 0)
-                {
-                    resx = (dispx/xu_max)*xd;
-                    resy = ((-dispx/xu_max)*yd)-dispy;
-                    
-                    printf("P%d(%d,%d)  XD=%d, YD=%d", i, xd, yd, resx, resy);
-                }
-                else
-                {
-                    resx = (dispx/xu_max)*xd;
-                    resy = ((-dispx/xu_max)*yd)+dispy;
+                printf("\nInforme o 'Xd' do ponto %d(x, y): ", i);
+                scanf("%f", &xd);
+                printf("Informe o 'Yd' do ponto %d(%.0f, y): ", i, xd);
+                scanf("%f", &yd);
 
-                    printf("P%d(%d,%d)  XD=%d, YD=%d", i, xd, yd, resx, resy);
-                }
+                xu = (((xd - xd_min)*(xu_max - xu_min))/(xd_max - xd_min)) + xu_min;
+                yu = (((yd - yd_max)*(yu_max - yu_min))/(yd_min - yd_max)) + yu_min;
 
-                // Continuar adicionando pontos com coordenadas
-                printf("\n\nAdicionar mais pontos?[1 - Sim, 2 - Não]");
+                printf("\nPonto %d(%.0f,%.0f)  Xu = %.0f, Yu = %.0f", i, xd, yd, xu, yu);
+
+                printf("\n\nAdicionar mais pontos?\n1. Sim\n2. N�o\n");
                 scanf("%d", &again);
                 i++;
             } while (again == 1);
+
             break;
     }
     return 0;
 }
-
-
